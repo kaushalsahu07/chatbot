@@ -1,12 +1,85 @@
-# React + Vite
+# Chatbot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, customizable chatbot application built with React. This project demonstrates real-time messaging and a responsive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- 💬 Real-time chat interface
+- 📱 Responsive design for all devices
+- 🛠️ Easy to customize and extend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Website Link
+
+[ChatBot]()
+
+---
+
+## Getting Started
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/chatbot.git
+cd chatbot
+npm install
+```
+
+### Running the App
+
+```bash
+npm run dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173).
+
+---
+
+## Project Structure
+
+```
+chatbot/
+├── public/
+├── src/
+│   ├── App.css
+|   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── package.json
+└── README.md
+```
+
+---
+
+## Configuration
+
+- Get Your Api key from [Cohere](https://dashboard.cohere.com/api-keys)
+- Update APIKey on `.env` Replace "YourAPIKey"
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+---
+
+## Contact
+For any inquiries, reach out at [kaushal.r.sahu@outlook.com].<br>
+GitHub: [@kaushalsahu07](https://github.com/kaushalsahu07).<br>
+Linkedin: [@kaushalsahu07](www.linkedin.com/in/kaushalsahu07).<br>
+Instagram: [@cd.kaushal](https://www.instagram.com/cd.kaushal?igsh=cTVram1ia3Vvamxz).<br>
+Portfolio: [Website Link ](https://kaushalsahu07.github.io/portfolio/).<br>
+X (Tweeter): [@kaushalsahu_07](https://x.com/kaushalsahu_07?t=7nk-jApWrJkgW6YwklJZWQ&s=09).<br>
+
+
+---
+
+**Happy chatting! 🚀**
