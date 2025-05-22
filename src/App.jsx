@@ -35,7 +35,7 @@ function App() {
     if (input.trim()) {
       setMessages([...messages, { text: input, sender: "user" }]);
 
-      // Store User Input 
+      // Store User Input
       const userMessage = input;
       setInput("");
 
@@ -47,17 +47,16 @@ function App() {
         const response = await cohere.generate({
           model: "command",
           prompt: input,
-          maxTokens: 100
+          maxTokens: 100,
         });
 
         const data = response.generations[0].text;
 
         //Filter Loading Message and Add Bot Response
-        setMessages(prev => [
-        ...prev.filter(msg => msg.text !== "Typing..."),
-        { text: data, sender: "bot" }
-      ]);
-
+        setMessages((prev) => [
+          ...prev.filter((msg) => msg.text !== "Typing..."),
+          { text: data, sender: "bot" },
+        ]);
       } catch (error) {
         // Handle error
         console.error("Error generating response:", error);
@@ -71,19 +70,20 @@ function App() {
 
   return (
     <>
-      <div className="flex items-center justify-center bg-[#F5F5F5] h-screen">
-        <div className="relative w-[40rem] h-screen md:h-[50rem] bg-[#fff] rounded-xl shadow-[0px_0px_50px_-20px_rgba(59,_130,_246,_0.5)]">
+      <div className="flex items-center justify-center bg-[#F5F5F5] min-h-screen p-4">
+        <div className="relative w-full max-w-[40rem] h-[90vh] md:h-[80vh] bg-white rounded-xl shadow-[0px_0px_50px_-20px_rgba(59,_130,_246,_0.5)]">
           {/* Header */}
-          <div className="bg-[#4A99E8] flex justify-center h-[80px] rounded-lg p-10">
+          <div className="bg-[#4A99E8] flex justify-center h-20 rounded-t-xl p-4">
             <div className="flex items-center gap-2">
-              <img className="w-[50px] rounded-full" src={BotImg} alt="Bot" />
+              <img className="w-12 rounded-full" src={BotImg} alt="Bot" />
               <h1 className="text-white text-2xl font-bold">ChatBot</h1>
             </div>
           </div>
-          {/* Chat Box */}
-          <div className="h-[calc(100vh-80px)] md:h-[calc(50rem-80px)] relative">
-            {/* Chat Messages */}
-            <div className="Chat-Dashboard overflow-y-auto h-[calc(100%-80px)] md:h-[calc(100%-80px)] flex flex-col gap-4 p-3 md:p-5 custom-scrollbar">
+
+          {/* Chat Container */}
+          <div className="flex flex-col h-[calc(100%-5rem)]">
+            {/* Messages Area */}
+            <div className="Chat-Dashboard flex-1 overflow-y-auto p-4 custom-scrollbar">
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -91,42 +91,45 @@ function App() {
                     message.sender === "user" ? "justify-end" : ""
                   }`}
                 >
-                  <div className={`${message.sender === "user" ? "hidden" : ""}`}>
+                  <div
+                    className={`${message.sender === "user" ? "hidden" : ""}`}
+                  >
                     <img
                       className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full flex items-end"
-                        src={BotImg}
-                        alt="Bot"
-                      />
-                    </div>
-                    <div
-                      className={`${
-                        message.sender === "user"
-                          ? "bg-[#4A99E8] text-white rounded-bl-[10px] rounded-br-[0px]"
-                          : "bg-[#F5F5F5] rounded-bl-[0px] rounded-br-[10px]"
-                      } rounded-tl-[10px] rounded-tr-[10px] p-3 md:p-4 w-auto max-w-[80%] md:max-w-[70%]`}
-                    >
-                      <p className="text-xs md:text-sm">{message.text}</p>
-                    </div>
-                    <div ref={mesEnd}></div>
+                      src={BotImg}
+                      alt="Bot"
+                    />
                   </div>
-                ))}
+                  <div
+                    className={`${
+                      message.sender === "user"
+                        ? "bg-[#4A99E8] text-white rounded-bl-[10px] rounded-br-[0px]"
+                        : "bg-[#F5F5F5] rounded-bl-[0px] rounded-br-[10px]"
+                    } rounded-tl-[10px] rounded-tr-[10px] p-3 md:p-4 w-auto max-w-[80%] md:max-w-[70%]`}
+                  >
+                    <p className="text-xs md:text-sm">{message.text}</p>
+                  </div>
+                  <div ref={mesEnd}></div>
+                </div>
+              ))}
             </div>
-            {/* Input Box */}
-            <div className="input-box flex justify-between absolute bottom-0 p-3 md:p-5 w-full">
-              <input
-                type="text"
-                placeholder="Type your message..."
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKey}
-                className="w-[85%] md:w-[90%] h-[45px] md:h-[50px] text-sm outline-none border-2 border-[#4A99E8] rounded-full px-4 md:p-7"
-              />
-              <div className="flex items-center">
+
+            {/* Input Area - Fixed at bottom */}
+            <div className="p-4 border-t">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Type your message..."
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKey}
+                  className="flex-1 h-12 text-sm outline-none border-2 border-[#4A99E8] rounded-full px-4"
+                />
                 <button
-                  className="bg-[#4A99E8] text-white w-[45px] h-[45px] md:w-[50px] md:h-[50px] rounded-full flex items-center justify-center"
+                  className="bg-[#4A99E8] text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                   onClick={handleSend}
                 >
-                  <FontAwesomeIcon className="text-base md:text-lg" icon={faPaperPlane} />
+                  <FontAwesomeIcon icon={faPaperPlane} />
                 </button>
               </div>
             </div>
