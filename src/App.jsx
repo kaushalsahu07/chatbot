@@ -115,7 +115,7 @@ function App() {
             </div>
 
             {/* Input Area - Fixed at bottom */}
-            <div className="p-4 border-t">
+            <div className="p-4">
               <div className="flex gap-2">
                 <input
                   type="text"
