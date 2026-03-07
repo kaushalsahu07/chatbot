@@ -1,5 +1,5 @@
 import "./App.css";
-import BotImg from "../public/image.png";
+import BotImg from "/image.png";
 import { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +10,6 @@ function App() {
   const [messages, setMessages] = useState([
     { text: "Hello! How can I help you today?", sender: "bot" },
   ]);
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   // Scroll to the bottom of the chat
   const mesEnd = useRef(null);
@@ -44,13 +43,13 @@ function App() {
         setMessages((prev) => [...prev, { text: "Typing...", sender: "bot" }]);
 
         // API Call to Cohere
-        const response = await cohere.generate({
-          model: "command",
-          prompt: input,
+        const response = await cohere.chat({
+          model: "command-a-03-2025",
+          message: input,
           maxTokens: 100,
         });
 
-        const data = response.generations[0].text;
+        const data = response.text;
 
         //Filter Loading Message and Add Bot Response
         setMessages((prev) => [
