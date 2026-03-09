@@ -53,7 +53,7 @@ function App() {
         const response = await cohere.chat({
           model: "command-a-03-2025",
           message: messageText,
-          preamble: "Your name is Nova AI, you are a helpful assistant, you will answer the user's question in a concise manner.",
+          preamble: "Your name is Zora AI, you are a helpful assistant, you will answer the user's question in a concise manner.",
           maxTokens: 100,
         });
 
@@ -86,7 +86,7 @@ function App() {
           <span className="text-[2rem] text-indigo-500 ">✦</span>
         </div>
         <div>
-          <h2 className="font-semibold text-gray-800 text-sm leading-tight">Nova AI</h2>
+          <h2 className="font-semibold text-gray-800 text-sm leading-tight">Zora Ai</h2>
           <p className="text-xs text-gray-400">Always ready to help</p>
         </div>
       </div>
