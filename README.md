@@ -11,7 +11,7 @@ A modern, customizable chatbot application built with React. This project demons
 
 ## Website Link
 
-[Zara AI](https://zorai.netlify.app/)
+[Zora AI](https://zorai.netlify.app/)
 
 
 ## Getting Started
