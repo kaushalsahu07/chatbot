@@ -2,7 +2,6 @@
 
 A modern, customizable chatbot application built with React. This project demonstrates real-time messaging and a responsive UI.
 
-
 ## Features
 
 - 💬 Real-time chat interface
@@ -12,7 +11,7 @@ A modern, customizable chatbot application built with React. This project demons
 
 ## Website Link
 
-[ChatBot](https://personal-bot.netlify.app/)
+[Zara AI](https://zorai.netlify.app/)
 
 
 ## Getting Started
