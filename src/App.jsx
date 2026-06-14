@@ -11,6 +11,11 @@ const SUGGESTIONS = [
   "Tell me a fun science fact",
 ];
 
+// Initialize Cohere client with the API key
+const cohere = new CohereClient({
+  token: import.meta.env.VITE_Api_Key,
+});
+
 function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
@@ -32,11 +37,6 @@ function App() {
     }
   };
 
-  // Initialize Cohere client with the API key
-  const cohere = new CohereClient({
-    token: import.meta.env.VITE_Api_Key,
-  });
-
   const handleSend = async (overrideText = null) => {
     const messageText = overrideText ?? input;
     if (messageText.trim()) {
@@ -53,7 +53,8 @@ function App() {
         const response = await cohere.chat({
           model: "command-a-03-2025",
           message: messageText,
-          preamble: "Your name is Zora AI, you are a helpful assistant, you will answer the user's question in a concise manner.",
+          preamble:
+            "Your name is Zora AI, you are a helpful assistant, you will answer the user's question in a concise manner.",
           maxTokens: 100,
         });
 
@@ -79,29 +80,35 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen bg-gray-50 overflow-hidden">
-
       {/* Top branding bar */}
       <div className="flex items-center gap-3 px-6 py-4 flex-shrink-0">
         <div className="w-12 h-12 flex rounded-xl bg-indigo-100 items-center justify-center">
           <span className="text-[2rem] text-indigo-500 ">✦</span>
         </div>
         <div>
-          <h2 className="font-semibold text-gray-800 text-sm leading-tight">Zora Ai</h2>
+          <h2 className="font-semibold text-gray-800 text-sm leading-tight">
+            Zora Ai
+          </h2>
           <p className="text-xs text-gray-400">Always ready to help</p>
         </div>
       </div>
 
       {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-
         {isWelcome ? (
           /* Welcome screen */
           <div className="flex-1 flex flex-col items-center justify-center px-6">
             <div className="w-20 h-20 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 shadow-sm">
-              <span className="text-4xl text-indigo-500 select-none leading-none">✦</span>
+              <span className="text-4xl text-indigo-500 select-none leading-none">
+                ✦
+              </span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">How can I help you?</h1>
-            <p className="text-gray-400 text-sm mb-8 text-center">Ask me anything or try a suggestion below</p>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+              How can I help you?
+            </h1>
+            <p className="text-gray-400 text-sm mb-8 text-center">
+              Ask me anything or try a suggestion below
+            </p>
             <div className="grid grid-cols-2 gap-3 w-full max-w-lg">
               {SUGGESTIONS.map((s, i) => (
                 <button
@@ -127,7 +134,9 @@ function App() {
                 >
                   {message.sender === "bot" && (
                     <div className="w-8 h-8 rounded-xl bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl text-indigo-500 select-none leading-none">✦</span>
+                      <span className="text-2xl text-indigo-500 select-none leading-none">
+                        ✦
+                      </span>
                     </div>
                   )}
                   <div
@@ -170,7 +179,6 @@ function App() {
             </p>
           </div>
         </div>
-
       </div>
     </div>
   );
